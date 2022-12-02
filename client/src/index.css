@@ -1810,12 +1810,30 @@ label form [type='radio'] {
 
 
 
-footer {
-  background-color: lightcoral;
+.main-footer {
+
+  background-color: salmon;
   padding: 40px 5%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
+.information {
+  color: whitesmoke;
+}
 
-img .footer-icon {
-  size: 5px;
+.list-unstyled {
+  color: #0896d8;
+}
+
+.footer-icon {
+  float: left;
+  height: 100px;
+  padding: 25px;
+}
+
+.col {
+  padding: 15px;
 }
