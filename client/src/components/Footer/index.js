@@ -16,23 +16,60 @@ const Footer = () => {
             &larr; Go Back
           </button>
         )}
+
         <h4>
-
-          <a href="https://www.linkedin.com/home">linkdin</a>
-
-
           <img className="footer-icon" src="/favicon.jpeg" alt="Valor Icon" />
-
-          <span
-            className="emoji"
-            role="img"
-            aria-label="heart"
-            aria-hidden="false"
-          >
-
-          </span>{' '}
-
         </h4>
+
+        <div className="footer-container">
+          <div className="row">
+            {/* Column1*/}
+            <div className="col">
+              <h4 className="information">information</h4>
+              <ul className="list-unstyled">
+                <li><a className="linkedin" href="https://www.linkedin.com/company/81539399/admin/">linkdin</a>
+                </li>
+                <li>GitHub</li>
+                <li>contact</li>
+                <li>Phoenix, Arizona</li>
+              </ul>
+            </div>
+
+            {/* Column2*/}
+            <div className="col">
+              <h4 className="information">information</h4>
+              <ul className="list-unstyled">
+                <li>placeholder</li>
+                <li>placeholder</li>
+                <li>placeholder</li>
+                <li>placeholder</li>
+              </ul>
+            </div>
+
+            {/* Column3*/}
+            <div className="col">
+              <h4 className="information">information</h4>
+              <ul className="list-unstyled">
+                <li>placeholder</li>
+                <li>placeholder</li>
+                <li>placeholder</li>
+                <li>placeholder</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+        <span
+          className="emoji"
+          role="img"
+          aria-label="heart"
+          aria-hidden="false"
+        >
+
+        </span>{' '}
+
+
       </div>
     </footer>
   );
