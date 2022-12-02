@@ -1,114 +1,191 @@
-import { __InputValue } from "graphql";
-import React, { Component } from "react";
-import Checkbox from "./checkbox";
-import InputField from "./inputfield";
+import { InputValue } from "graphql";
+import React, { useEffect, useState} from "react";
+import { Input, InputGroup, InputGroupText} from 'reactstrap'
+import Graph from "../Graph/graphs";
+import { VictoryBar, Bar, VictoryChart, VictoryGroup } from 'victory';
 
-const OPTIONS = ["One", "Two", "Three"];
+
+const ROICalc = () => {
+  
+  const [percent, setPercents] = useState(["This is a world"]);
+  const [services, setServices] = useState([])
+  const [listservices, setListServices] = useState([])
+
+  const inputs = [
+      {service: "Depression Screen",
+        medicareReimb: true, 
+        medicaidReim: true,
+        commericalReimb: true,
+        Reimbursement: 11.44,
+        caprate: 0,
+        potential: 0,
+        id: 1
+      },
+      {service: "Alcohol Screen",
+      medicareReimb: true, 
+      medicaidReim: true,
+      commericalReimb: true,
+      Reimbursement: 11.44,
+      caprate: 0,
+      potential: 0,
+      id: 2
+      },
+      {service: "Ankle Brachial Index",
+      medicareReimb: true, 
+      medicaidReim: true,
+      commericalReimb: true,
+      Reimbursement: 84,
+      caprate: 0,
+      potential: 0,
+      id:3
+      },
+  {service: "Annual Wellness Visit",
+      medicareReimb: true, 
+      medicaidReim: true,
+      commericalReimb: true,
+      Reimbursement: 125,
+      caprate: 0,
+      id: 4
+   }];
 
 
-// const { price } = inputValue;
-class ROICalc extends Component {
-  state = {
-    checkboxes: OPTIONS.reduce(
-      (options, option) => ({
-        ...options,
-        [option]: false
-      }),
-      {}
-    )
-  };
+   const formatter = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
-  selectAllCheckboxes = isSelected => {
-    Object.keys(this.state.checkboxes).forEach(checkbox => {
-      this.setState(prevState => ({
-        checkboxes: {
-          ...prevState.checkboxes,
-          [checkbox]: isSelected
-        }
-      }));
-    });
-  };
+      const handleInput = event => {
+        setServices(event.target.value)
+        
+      }      
 
-  selectAll = () => this.selectAllCheckboxes(true);
 
-  deselectAll = () => this.selectAllCheckboxes(false);
-
-  handleCheckboxChange = changeEvent => {
-    const { name } = changeEvent.target;
-
-    this.setState(prevState => ({
-      checkboxes: {
-        ...prevState.checkboxes,
-        [name]: !prevState.checkboxes[name]
+      function handleSubmit () {
+        setListServices()
+        console.log(listservices)
       }
-    }));
-  };
+    
 
-  handleFormSubmit = formSubmitEvent => {
-    formSubmitEvent.preventDefault();
 
-    Object.keys(this.state.checkboxes)
-      .filter(checkbox => this.state.checkboxes[checkbox])
-      .forEach(checkbox => {
-        console.log(checkbox, "is selected.");
-      });
-  };
+      useEffect(() => {
+        const handleInput = event => {
+          setServices(event.target.value)
+        }  
+        console.log("new console log" + services)
+      }, [services])
+      
 
-  createCheckbox = option => (
-    <Checkbox
-      label={option}
-      isSelected={this.state.checkboxes[option]}
-      onCheckboxChange={this.handleCheckboxChange}
-      key={option}
-    />
-    // <Form>
-    // <InputField
-    // type="number"
-    // value={price}
-    // placeholder="Add Price"
-    // label="Price"
-    // name="price"
-    // onChange={this.handleCheckboxChange}
-    // />
-    // </Form>
-  );
+      function handleClick() {
+        let strrep = services.replace("Services","")
+        let newint = parseInt(strrep)
+        
+        
+        setListServices([...listservices, newint])
+        console.log(listservices)
+        setValorPerf([
+          { x: "Alc Screen",  y: 11.44 * .8 * 4000 }, 
+          { x: "Depression Screen", y: 11.44 * .8 * 4000 }, 
+          { x: "ABI", y: 85 * .8 * 2000 *.35 },
+          {x: "Annual Wellness Visit", y: 125 * .8 * 2000}
+        ]);
+        setCurrPerf([
+          { x: "Alc Screen",  y: listservices[0]/100 * 4000 *11.44 }, 
+          { x: "Depression Screen", y: listservices[1] /100 * 4000 *11.44 }, 
+          { x: "ABI", y: listservices[2] / 100 * 85 * 2000 * .35 },
+          {x: "Annual Wellness Visit", y: listservices[3] / 100 * 2000 * 125}
+        ])
 
-  createCheckboxes = () => OPTIONS.map(this.createCheckbox);
+        setMakeMunay(formatter.format(264016 - listservices[0]/100 * 4000 *11.44  - listservices[1] /100 * 4000 *11.44 -listservices[2] / 100 * 85 * 2000 * .35 -listservices[3] / 100 * 2000 * 125) )
+      }
 
-  render() {
-    return (
-      <div className="container"> 
-        <div className="row mt-5">
-          <p>What Ancillary services do you offer?</p>
-          <div className="col-sm-12">
-            <form onSubmit={this.handleFormSubmit}>
-              {this.createCheckboxes()}
 
-              <div className="form-group mt-2">
+
+      function handleClick2() {
+        setListServices([...listservices, {services}])
+        console.log("newclick" + listservices)
+      }
+
+      const results = "Get your results!"
+      
+      function changeWorld(){
+        percent === "This is a world" ? setPercents("This is not a world") : setPercents("This is a world")
+      }
+
+      const [currperf, setCurrPerf] = useState(
+        [{ x: "Alc Screen",  y: 0 }, 
+        { x: "Depression Screen", y: 0 }, 
+        { x: "ABI", y: 0 },
+        {x: "Annual Wellness Visit", y: 0}]);
+
+        const [valorperf, setValorPerf] = useState(
+          [{ x: "Alc Screen",  y: 0 }, 
+          { x: "Depression Screen", y: 0 }, 
+          { x: "ABI", y: 0 },
+          {x: "Annual Wellness Visit", y: 0}]);
+
+
+
+          const [makemunay, setMakeMunay] = useState(0) 
+
+      return (
+        
+        <div >
+            <p>Please select each service your clinic is currently providing, and indicating at what percent:</p>
+          {inputs.map(input =>{
+            return(
+
+              <InputGroup>
+                <InputGroupText>
+                  {/* <Input 
+                  key={input.id}
+                  addon
+                  aria-label="Checkbox for following text input"
+                  type="checkbox"
+                  onChange={handleInput}>
+                  </Input> */}
+                </InputGroupText>
+                <Input 
+                placeholder={input.service} 
+                onChange={handleInput}/>
                 <button
-                  type="button"
-                  className="btn btn-outline-primary mr-2"
-                  onClick={this.selectAll}
-                >
-                  Select All
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-outline-primary mr-2"
-                  onClick={this.deselectAll}
-                >
-                  Deselect All
-                </button>
-                <button type="submit" className="btn btn-primary">
-                  Save
-                </button>
-              </div>
-            </form>
+                onClick={handleClick}
+               >
+                  Submit</button>
+              </InputGroup> 
+            )
+          })
+     
+        }  <button
+            onClick={handleClick}
+            value="FinalSubmit"
+            label= {results}>
+              {results}
+          </button>
+          <div>
+            
+          <VictoryChart>
+            <VictoryGroup offset={10}
+              colorScale={"qualitative"}
+            >
+              <VictoryBar
+                
+                data={currperf}
+        
+              />
+
+              <VictoryBar
+                data={valorperf}
+              />
+            </VictoryGroup>
+          </VictoryChart>
           </div>
+          <h2> You could earn an additional ${makemunay} per provider by partnering with Valor!</h2>
+
+
         </div>
-      </div>
-    );
-  }
-}
+
+    
+    )}
+      
 
 export default ROICalc;
