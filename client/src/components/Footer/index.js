@@ -5,7 +5,7 @@ const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <footer className="w-100 mt-auto bg-secondary p-4">
+    <footer className="main-footer clearfix">
 
       <div className="container text-center mb-5">
         {location.pathname !== '/' && (
@@ -17,9 +17,11 @@ const Footer = () => {
           </button>
         )}
         <h4>
-          **James, if you can link to linkedin, and add logo in footer that would be great**
+
+          <a href="https://www.linkedin.com/home">linkdin</a>
 
 
+          <img className="footer-icon" src="/favicon.jpeg" alt="Valor Icon" />
 
           <span
             className="emoji"
