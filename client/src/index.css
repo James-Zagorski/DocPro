@@ -1808,7 +1808,26 @@ label form [type='radio'] {
   }
 }
 
+.main-header {
+  background: rgba(24, 24, 27, 0.8);
 
+}
+
+.header-icon {
+  float: left;
+  height: 125px;
+  padding: 25px;
+}
+
+.site-name {
+  color: #84b8b4;
+  padding: 10px 15px;
+}
+
+.slogan {
+  color: salmon;
+  padding: 0px 15px;
+}
 
 .main-footer {
   background: rgba(24, 24, 27, 0.8);
@@ -1820,10 +1839,19 @@ label form [type='radio'] {
   width: 100%;
   align-items: center;
   justify-content: center;
+}
 
+footer .main-footer {
 
-
-
+  background: rgba(24, 24, 27, 0.8);
+  padding: 25px;
+  position: relative;
+  bottom: 0;
+  display: flex;
+  color: white;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .information {

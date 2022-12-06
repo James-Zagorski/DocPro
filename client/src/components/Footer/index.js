@@ -5,7 +5,7 @@ const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <footer className="main-footer clearfix">
+    <footer className="main-footer">
 
       <div className="container text-center mb-5">
         {location.pathname !== '/' && (
