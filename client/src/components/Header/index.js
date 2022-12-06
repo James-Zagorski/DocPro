@@ -9,13 +9,14 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
+    <header className="main-header">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
+          <p><img className="header-icon" src="/favicon.jpeg" alt="Valor Icon" /></p>
           <Link className="text-light" to="/">
-            <h1 className="m-0">Valor Education</h1>
+            <h1 className="site-name">Valor Education</h1>
           </Link>
-          <p className="m-0">Learn how to improve your practice</p>
+          <p className="slogan">Learn how to improve your practice</p>
         </div>
         <div>
           {Auth.loggedIn() ? (
