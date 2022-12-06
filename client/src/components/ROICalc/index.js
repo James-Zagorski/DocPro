@@ -5,6 +5,7 @@ import Graph from "../Graph/graphs";
 import { VictoryBar, Bar, VictoryChart, VictoryGroup } from 'victory';
 
 
+
 const ROICalc = () => {
   
   const [percent, setPercents] = useState(["This is a world"]);
@@ -130,7 +131,7 @@ const ROICalc = () => {
       return (
         
         <div >
-            <p>Please select each service your clinic is currently providing, and indicating at what percent:</p>
+            <p>Please select each service your clinic is currently providing, and indicate at what percent you are providing the services to the eligible population. Please enter a value between 0-100. If you aren't providing the service, just indicate 0:</p>
           {inputs.map(input =>{
             return(
 
@@ -179,7 +180,7 @@ const ROICalc = () => {
             </VictoryGroup>
           </VictoryChart>
           </div>
-          <h2> You could earn an additional ${makemunay} per provider by partnering with Valor!</h2>
+          <h2> You could earn an additional ${makemunay} per provider per year by partnering with Valor!</h2>
 
 
         </div>
