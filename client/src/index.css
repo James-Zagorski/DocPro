@@ -1811,13 +1811,19 @@ label form [type='radio'] {
 
 
 .main-footer {
-
-  background-color: salmon;
-  padding: 40px 5%;
-  position: absolute;
-  left: 0;
+  background: rgba(24, 24, 27, 0.8);
+  padding: 25px;
+  position: relative;
   bottom: 0;
-  right: 0;
+  display: flex;
+  color: white;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+
+
+
 }
 
 .information {
