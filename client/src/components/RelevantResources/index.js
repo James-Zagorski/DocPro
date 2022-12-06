@@ -3,32 +3,33 @@ import React from 'react';
 const RelevantResources = () => {
   return (
     <div style={{display: "flex", justifyContent: "space-between"}}>
-      <img 
-        src="AIMS.jpeg" 
-        alt="AIMS"
-        className='AIMS-image'
-        style={{width:'220px'}}
-      />
-      <img 
-        src="rass.png" 
-        alt="rass"
-        className='rass-image'
-        style={{width:'220px'}}
-      />
-      <img 
-        src="tech.png" 
-        alt="tech"
-        className='tech-image'
-        style={{width:'220px'}}
-      />
-      <img 
-        src="AIM.jpeg" 
-        alt="AIM"
-        className='AIM-image'
-        style={{width:'220px'}}
-      />
+      <Image source="AIMS.jpeg" link="https://aimseducation.edu/blog/the-impact-of-technology-on-healthcare"/>
+      <Image source="tech.png" link="https://revcycleintelligence.com/features/value-based-contracting-101-preparing-negotiating-and-succeeding"/>
+      <Image source="rass.png" link="https://www.rasmussen.edu/degrees/health-sciences/blog/technology-in-healthcare-transformation/"/>
+      <Image source="AIM.jpeg" link="https://research.aimultiple.com/rpa-healthcare/"/>
     </div>
   );
 };
+
+const Image = (props) => {
+  return(
+    <a href={props.link} target="_blank">
+      <img 
+        src={props.source}
+        alt='resourceImage'
+        style={{
+          width:'200px', 
+          height:'200px',
+          borderStyle: 'solid', 
+          borderWidth: '2px',
+          borderRadius: '10px',
+          borderColor: 'black',
+          padding: '10px',
+        }}
+      />
+    </a>
+  )
+}
+
 
 export default RelevantResources;

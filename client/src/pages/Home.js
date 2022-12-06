@@ -22,15 +22,6 @@ const Home = () => {
         </div>
         <div className="col-12 col-md-10 mb-3 p-3">
           <RelevantResources />
-        
-
-
-
-        
-        
-        
-        
-        
         </div>
         <div className="col-12 col-md-8 mb-3">
           {loading ? (
