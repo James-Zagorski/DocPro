@@ -2,7 +2,7 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
-
+const { InMemoryLRUCache } = require( '@apollo/utils.keyvaluecache')
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
@@ -12,6 +12,13 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
+  cache: new InMemoryLRUCache({
+        // ~100MiB
+        maxSize: Math.pow(2, 20) * 100,
+        // 5 minutes (in milliseconds)
+        ttl: 300_000,
+    
+  }),
 });
 
 app.use(express.urlencoded({ extended: false }));
