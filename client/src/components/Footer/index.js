@@ -29,31 +29,7 @@ const Footer = () => {
               <ul className="list-unstyled">
                 <li><a className="linkedin" href="https://www.linkedin.com/company/81539399/admin/">linkdin</a>
                 </li>
-                <li>GitHub</li>
-                <li>contact</li>
-                <li>Phoenix, Arizona</li>
-              </ul>
-            </div>
-
-            {/* Column2*/}
-            <div className="col">
-              <h4 className="information">information</h4>
-              <ul className="list-unstyled">
-                <li>placeholder</li>
-                <li>placeholder</li>
-                <li>placeholder</li>
-                <li>placeholder</li>
-              </ul>
-            </div>
-
-            {/* Column3*/}
-            <div className="col">
-              <h4 className="information">information</h4>
-              <ul className="list-unstyled">
-                <li>placeholder</li>
-                <li>placeholder</li>
-                <li>placeholder</li>
-                <li>placeholder</li>
+                <li><a className="Github" href="https://github.com/James-Zagorski/DocPro">GitHub</a></li>
               </ul>
             </div>
           </div>
