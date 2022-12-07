@@ -10,7 +10,7 @@ Our applications sole purpose is to provide assistance before, during and after 
 assistance they are missing out on and have opportunities to receive.
 
 Upon logging into our site you can Calculate your Valor ROI by selecting services the clinic is currently providing, and indicating what percent
-they are providing the services. In just a few click our application can tell you how much our app can assist you financially. 
+they are providing the services. In just a few clicks our application can tell you how much our app can assist you financially. 
 
 ![image](https://user-images.githubusercontent.com/106714417/206099125-9632d68b-32b1-4286-9482-4c7eaf8e2edf.png)
 
